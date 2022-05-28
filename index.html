@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="./images/logo.svg" alt="logo">
+        </div>
+        <div class="lib-log">
+            <h2>Library Log</h2>
+            <h4>Books: <span class="book-count">1</span></h4>
+            <h4>Read: <span class="read-count">0</span></h4>
+            <h4>Not Read: <span class="not-read-count">1</span></h4>
+            <img src="./images/lib-log.svg" alt="lib log">
+        </div>
+        <p> <small>designed & built with 🧡 by minku</small> </p>
+    </nav>
+
+    <header>
+        <h1>Library...</h1>
+        <button id="btn-add-book">Add Book</button>
+    </header>
+    
+    <main>
+        <section class="book">
+            <p>Title: <span class="title">Lorem.</span></p>
+            <p>Author: <span class="author">Lorem, ipsum.</span></p>
+            <p>Pages: <span class="pages">23</span></p>
+            <div class="icons">
+                <i class="fa-solid fa-check-double"></i>
+                <i class="fa-solid fa-trash-can trash"></i>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal">
+        <form action="#">
+            <fieldset>
+                <legend>book</legend>
+                <input required placeholder="title" type="text" name="title" id="title"><br>
+                <input required placeholder="author" type="text" name="author" id="author"><br>
+                <input required placeholder="pages" type="number" name="pages" id="pages"><br>
+                Have you read it? <input required type="checkbox" name="read" id="read"><br>
+                <button type="submit" id="btn-submit-book">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>
