@@ -157,6 +157,10 @@ section{
     color: red;
 }
 
+#check-green{
+    color: green;
+}
+
 /* modal ----------------------------------------------------------------------- */
 .modal{
     background-color: var(--background-dark-secondary);
@@ -196,6 +200,16 @@ input{
 .modal button:hover{
     background-color: var(--text-primary);
     color: var(--background-dark-secondary);
+}
+
+/* valid ------------------------------------------------------------------ */
+.valid{
+    position: absolute;
+    color: var(--text-primary);
+
+    left: 45rem;
+    top: 7rem;
+    z-index: 3;
 }
 
 

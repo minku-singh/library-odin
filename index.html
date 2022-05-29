@@ -26,29 +26,22 @@
 
     <header>
         <h1>Library...</h1>
-        <button id="btn-add-book">Add Book</button>
+        <button id="add-book">Add Book</button>
     </header>
+
+    <div class="valid"></div>
     
     <main>
-        <section class="book">
-            <p>Title: <span class="title">Lorem.</span></p>
-            <p>Author: <span class="author">Lorem, ipsum.</span></p>
-            <p>Pages: <span class="pages">23</span></p>
-            <div class="icons">
-                <i class="fa-solid fa-check-double"></i>
-                <i class="fa-solid fa-trash-can trash"></i>
-            </div>
-        </section>
     </main>
 
     <div class="modal">
-        <form action="#">
+        <form action="#" id="form">
             <fieldset>
                 <legend>book</legend>
-                <input required placeholder="title" type="text" name="title" id="title"><br>
-                <input required placeholder="author" type="text" name="author" id="author"><br>
-                <input required placeholder="pages" type="number" name="pages" id="pages"><br>
-                Have you read it? <input required type="checkbox" name="read" id="read"><br>
+                <input placeholder="title" type="text" name="title" id="title"><br>
+                <input placeholder="author" type="text" name="author" id="author"><br>
+                <input placeholder="pages" type="number" name="pages" id="pages"><br>
+                Have you read it? <input type="checkbox" name="read" id="status"><br>
                 <button type="submit" id="btn-submit-book">Submit</button>
             </fieldset>
         </form>
