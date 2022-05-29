@@ -18,7 +18,6 @@ let readCount = document.querySelector(".read-count");
 let notReadCount = document.querySelector(".not-read-count");
 
 
-
 // event listeners ---------------------------------------------------------
 addBookBtn.addEventListener("click", () => toggleModal())
 form.addEventListener("submit", (e) => submitForm(e));
@@ -86,6 +85,7 @@ let addBookTile = () => {
     });
 
     colorCheckBox(library);
+    libLog(library);
 }
 
 let handleCheckToggle = (e) => {
@@ -98,6 +98,8 @@ let handleCheckToggle = (e) => {
         library[e.parentElement.parentElement.getAttribute("id")]["status"] = false;
         localStorage.setItem("library", JSON.stringify(library));
     }
+
+    libLog(library);
 }
 
 let handleDelete = (e) => {
@@ -133,6 +135,21 @@ let colorCheckBox = (library) => {
     }
 }
 
+let libLog = (library) => {
+    bookCount.textContent = library.length;
+    let readC = 0;
+    let notReadC = 0;
+    for(let i = 0; i < library.length; i++){
+        if(library[i].status === true){
+            readC++;
+        }else{
+            notReadC++;
+        }
+    }
+    readCount.textContent = readC;
+    notReadCount.textContent = notReadC;
+}
+
 (() => {
     library = JSON.parse(localStorage.getItem("library"));
     let localLib = JSON.parse(localStorage.getItem("library"));
@@ -153,6 +170,7 @@ let colorCheckBox = (library) => {
     })
 
     colorCheckBox(library);
+    libLog(library);
 })();
 
 
