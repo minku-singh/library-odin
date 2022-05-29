@@ -169,6 +169,8 @@ section{
     left: 50vw;
     top: 30vh;
 
+    box-shadow: 1px 1px 10px var(--text-primary);
+
     padding: 2rem;
     border-radius: 10px;
 
@@ -208,7 +210,7 @@ input{
     color: var(--text-primary);
 
     left: 45rem;
-    top: 7rem;
+    top: 3rem;
     z-index: 3;
 }
 
@@ -243,10 +245,10 @@ input{
         background-color: var(--background-dark-secondary);
         color: var(--text-primary);
         position: absolute;
-        left: 15vw;
+        left: 10vw;
         top: 20vh;
     
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 10px;
     }
     

@@ -1,4 +1,5 @@
 let library = [];
+
 function Book(title, author, pages, status){
     this.title = title;
     this.author = author;
@@ -56,6 +57,56 @@ let submitForm = (e) => {
     }
 }
 
+let addBook = (title, author, pages, status) => {
+    let book = new Book(title, author, pages, status);
+    library.push(book);
+
+    localStorage.setItem("library", JSON.stringify(library));
+
+    addBookTile();
+}
+
+let addBookTile = () => {
+    let localLib = JSON.parse(localStorage.getItem("library"));
+    main.innerHTML = "";
+    localLib.map((book, id) => {
+        return(
+            main.innerHTML += `
+                <section id = ${id} class="book">
+                    <p>Title: <span class="title">${book.title}</span></p>
+                    <p>Author: <span class="author">${book.author}</span></p>
+                    <p>Pages: <span class="pages">${book.pages}</span></p>
+                    <div class="icons">
+                        <i onClick = "handleCheckToggle(this)" class="check fa-solid fa-check-double"></i>
+                        <i onClick = "handleDelete(this)" class="delete fa-solid fa-trash-can trash"></i>
+                    </div>
+                </section>
+            `
+        )
+    });
+
+    colorCheckBox(library);
+}
+
+let handleCheckToggle = (e) => {
+    if(!(e.getAttribute("id") === "check-green")){
+        e.setAttribute("id", "check-green");
+        library[e.parentElement.parentElement.getAttribute("id")]["status"] = true;
+        localStorage.setItem("library", JSON.stringify(library));
+    }else{
+        e.setAttribute("id", null);
+        library[e.parentElement.parentElement.getAttribute("id")]["status"] = false;
+        localStorage.setItem("library", JSON.stringify(library));
+    }
+}
+
+let handleDelete = (e) => {
+    let id = e.parentElement.parentElement.id;
+    library.splice(id, 1);
+    localStorage.setItem("library", JSON.stringify(library));
+    e.parentElement.parentElement.remove();
+}
+
 let isValid = (title, author, pages) => {
     if(title === "" || author === "" || pages === ""){
         return false;
@@ -70,59 +121,41 @@ let clearInput = () => {
     document.querySelector("#pages").value = "";
 }
 
-let addBook = (title, author, pages, status) => {
-    let book = new Book(title, author, pages, status);
-    library.push(book);
+let colorCheckBox = (library) => {
+    let status = document.querySelectorAll(".check");
 
-    addBookTile(book);
-}
-
-let addBookTile = (book) => {
-    main.innerHTML += `
-        <section class="book">
-            <p>Title: <span class="title">${book.title}</span></p>
-            <p>Author: <span class="author">${book.author}</span></p>
-            <p>Pages: <span class="pages">${book.pages}</span></p>
-            <div class="icons">
-                <i onClick = "handleCheckToggle(this, book)" class="check fa-solid fa-check-double"></i>
-                <i onClick = "handleDelete(this)" class="delete fa-solid fa-trash-can trash"></i>
-            </div>
-        </section>
-    `;
-
-    colorCheckBox(book);
-}
-
-let colorCheckBox = (book) => {
-    let checkList = document.querySelectorAll(".check");
-
-    for(let i = 0; i < checkList.length; i++){
-        if(book.status === true){
-            checkList[i].setAttribute("id", "check-green");
-        } 
+    for(let i = 0; i < library.length; i++){
+        if(library[i].status === false){
+            status[i].setAttribute("id", null);
+        }else{
+            status[i].setAttribute("id", "check-green");
+        }
     }
 }
 
-let handleDelete = (e) => {
-    // library.remove(book);
-    // console.log(library);
-    // for(let i = 0; i < library.length; i++){
-    //     if(library[i].title === book.title){
-    //         library.splice(i)
-    //     }
-    // }
-    // console.log(library);
-    e.parentElement.parentElement.remove();
-}
+(() => {
+    library = JSON.parse(localStorage.getItem("library"));
+    let localLib = JSON.parse(localStorage.getItem("library"));
+    localLib.map((book, id) => {
+        return(
+            main.innerHTML += `
+                <section id = ${id} class="book">
+                    <p>Title: <span class="title">${book.title}</span></p>
+                    <p>Author: <span class="author">${book.author}</span></p>
+                    <p>Pages: <span class="pages">${book.pages}</span></p>
+                    <div class="icons">
+                        <i onClick = "handleCheckToggle(this)" class="check fa-solid fa-check-double"></i>
+                        <i onClick = "handleDelete(this)" class="delete fa-solid fa-trash-can trash"></i>
+                    </div>
+                </section>
+            `
+        )
+    })
 
-let handleCheckToggle = (e) => {
-    if(!(e.getAttribute("id") === "check-green")){
-        e.setAttribute("id", "check-green");
-    }else{
-        e.setAttribute("id", null);
-    }
-}
+    colorCheckBox(library);
+})();
 
-// let libraryLog = () => {
 
-// }
+
+
+
