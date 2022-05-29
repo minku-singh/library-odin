@@ -8,8 +8,5 @@ This is built with Vanilla JS.
 - Books accessible even in the next session - localstorage used
 - Library log
 
-## Live
-- [live]()
-
 ## Preview
 ![preview](./images/preview.png)
